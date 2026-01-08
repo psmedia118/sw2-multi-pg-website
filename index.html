@@ -8,15 +8,14 @@
     
     <style>
         :root {
-            --primary: #1b3022; /* Deep Emerald Green */
-            --secondary: #e2725b; /* Warm Terracotta */
-            --bg: #fdfaf5; /* Soft Cream */
-            --card: #ffffff; /* Pure White */
+            --primary: #1b3022;
+            --secondary: #e2725b;
+            --bg: #fdfaf5;
+            --card: #ffffff;
             --border: #e0dcd0;
             --text-dark: #1b3022;
             --text-light: #5c675f;
             --white: #ffffff;
-            /* 1️⃣ BRANDING CONSISTENCY: Shared Spacing/Shadows */
             --shadow-sm: 0 4px 12px rgba(27, 48, 34, 0.05);
             --shadow-md: 0 10px 30px rgba(27, 48, 34, 0.08);
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -31,18 +30,18 @@
             line-height: 1.6;
         }
 
-        /* --- 2️⃣ NAVIGATION REFINEMENT --- */
+        /* --- NAVIGATION --- */
         nav {
             position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
             width: 90%; max-width: 1200px;
             padding: 12px 40px; 
             background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(20px); /* Enhanced blur */
+            backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.3);
             display: flex; justify-content: space-between; align-items: center;
             border-radius: 100px; z-index: 3000;
-            box-shadow: var(--shadow-md); /* 2️⃣ Premium Shadow */
+            box-shadow: var(--shadow-md);
         }
         .logo { font-family: 'Playfair Display', serif; font-size: 1.6rem; letter-spacing: 2px; color: var(--primary); cursor: pointer; font-weight: 900; }
         
@@ -54,7 +53,6 @@
             position: relative;
             padding: 5px 0;
         }
-        /* 2️⃣ ACTIVE STATE & HOVER ANIMATION */
         .nav-links a::after {
             content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px;
             background: var(--secondary); transition: var(--transition);
@@ -64,7 +62,7 @@
 
         .menu-toggle { display: none; font-size: 1.8rem; color: var(--primary); cursor: pointer; }
 
-        /* --- 1️⃣ & 3️⃣ CONSISTENT PAGE HEADINGS & HIERARCHY --- */
+        /* --- LAYOUT --- */
         .page { display: none; min-height: 100vh; padding: 160px 10% 100px; }
         .page.active { display: block; animation: slideUp 0.6s ease forwards; }
 
@@ -73,7 +71,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* --- 3️⃣ CONTENT HIERARCHY: Bolder Headlines --- */
         .title-group { text-align: center; margin-bottom: 60px; }
         .title-group h2 { 
             font-family: 'Playfair Display'; 
@@ -82,101 +79,78 @@
             font-weight: 900;
             margin-top: 10px;
         }
-        .hero-tag { 
-            color: var(--secondary); 
-            letter-spacing: 6px; 
-            text-transform: uppercase; 
-            font-size: 0.8rem; 
-            font-weight: 800;
-            display: block;
-        }
+        .hero-tag { color: var(--secondary); letter-spacing: 6px; text-transform: uppercase; font-size: 0.8rem; font-weight: 800; display: block; }
 
-        /* --- 3️⃣ HOME HERO UPGRADE --- */
+        /* --- HOME --- */
         #home-page { 
-            padding: 0; display: none; flex-direction: column; 
-            justify-content: center; align-items: center; text-align: center;
+            padding: 0; display: none; flex-direction: column; justify-content: center; align-items: center; text-align: center;
             background: linear-gradient(rgba(27, 48, 34, 0.65), rgba(27, 48, 34, 0.35)), url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1920&q=80');
             background-size: cover; background-position: center;
         }
         #home-page.active { display: flex; }
-        .hero-title { 
-            font-family: 'Playfair Display', serif; 
-            font-size: clamp(3.5rem, 10vw, 7rem); /* 3️⃣ Bolder Headline */
-            margin: 10px 0 20px; 
-            line-height: 0.9; 
-            color: var(--white); 
-            font-weight: 900;
-        }
+        .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(3.5rem, 10vw, 7rem); margin: 10px 0 20px; line-height: 0.9; color: var(--white); font-weight: 900; }
         .hero-desc { color: var(--white); margin-bottom: 40px; font-size: 1.2rem; opacity: 0.85; max-width: 600px; }
 
-        /* --- 1️⃣ & 4️⃣ UNIFIED CARDS & BUTTONS --- */
+        /* --- CARDS & BUTTONS --- */
         .offer-grid, .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        
-        .card-style { 
-            background: var(--card); border: 1px solid var(--border); padding: 35px; 
-            border-radius: 24px; transition: var(--transition); box-shadow: var(--shadow-sm);
-        }
+        .card-style { background: var(--card); border: 1px solid var(--border); padding: 35px; border-radius: 24px; transition: var(--transition); box-shadow: var(--shadow-sm); }
         .card-style:hover { border-color: var(--secondary); transform: translateY(-8px); box-shadow: var(--shadow-md); }
         
-        /* 4️⃣ CTA REINFORCEMENT: Stronger Button Contrast */
         .btn-action { 
             padding: 20px 50px; background: var(--primary); color: var(--white); border: none; 
             font-weight: 800; border-radius: 100px; cursor: pointer; text-transform: uppercase; 
             letter-spacing: 2px; transition: var(--transition); font-size: 0.85rem;
-            display: inline-block;
             box-shadow: 0 4px 15px rgba(27, 48, 34, 0.2);
         }
-        .btn-action:hover { background: var(--secondary); transform: scale(1.05); box-shadow: 0 6px 20px rgba(226, 114, 91, 0.3); }
+        .btn-action:hover { background: var(--secondary); transform: scale(1.05); }
 
-        /* --- MENU FILTER UPGRADE --- */
+        /* --- MENU SECTION --- */
         .menu-tabs { display: flex; justify-content: center; gap: 15px; margin-bottom: 50px; flex-wrap: wrap; }
-        .tab-btn { 
-            padding: 10px 25px; border: 1px solid var(--border); background: var(--white); 
-            color: var(--text-light); border-radius: 50px; cursor: pointer; transition: var(--transition); font-weight: 600;
-        }
+        .tab-btn { padding: 10px 25px; border: 1px solid var(--border); background: var(--white); color: var(--text-light); border-radius: 50px; cursor: pointer; transition: var(--transition); font-weight: 600; }
         .tab-btn.active { background: var(--primary); color: var(--white); border-color: var(--primary); }
-
         .menu-card { padding: 0; overflow: hidden; }
         .menu-card img { width: 100%; height: 280px; object-fit: cover; transition: var(--transition); }
         .menu-card:hover img { transform: scale(1.05); }
         .menu-info { padding: 25px; display: flex; justify-content: space-between; align-items: center; }
 
-        /* --- 5️⃣ FOOTER UPGRADE --- */
-        footer { 
-            background: var(--primary); padding: 100px 10% 50px; color: var(--white); 
-            position: relative; overflow: hidden;
+        /* --- 💎 PREMIUM RESERVE SECTION --- */
+        .reserve-container {
+            max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.2fr;
+            background: var(--card); border-radius: 32px; overflow: hidden; border: 1px solid var(--border); box-shadow: var(--shadow-md);
         }
+        .reserve-info { background: var(--primary); color: white; padding: 50px; display: flex; flex-direction: column; justify-content: center; }
+        .reserve-form { padding: 50px; background: white; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 800; color: var(--text-light); margin-bottom: 8px; }
+        .reserve-form input, .reserve-form select { 
+            width: 100%; padding: 15px; border: 1px solid var(--border); border-radius: 12px; 
+            font-family: inherit; font-size: 1rem; transition: var(--transition);
+        }
+        .reserve-form input:focus { border-color: var(--secondary); outline: none; background: #fffaf9; }
+
+        /* --- FOOTER --- */
+        footer { background: var(--primary); padding: 100px 10% 50px; color: var(--white); }
         .footer-main { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 60px; margin-bottom: 80px; }
         .f-title { color: var(--secondary); font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 30px; display: block; font-weight: 800; }
         .footer-links li { list-style: none; margin-bottom: 15px; }
         .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.95rem; transition: var(--transition); }
         .footer-links a:hover { color: var(--secondary); padding-left: 5px; }
-        
-        .contact-box { 
-            background: rgba(255,255,255,0.03); padding: 30px; border-radius: 24px; 
-            border: 1px solid rgba(255,255,255,0.08); 
-        }
-        .phone-link { font-size: 1.8rem; color: var(--white); font-weight: 800; display: block; margin-top: 10px; text-decoration: none; transition: var(--transition); }
-        .phone-link:hover { color: var(--secondary); }
+        .contact-box { background: rgba(255,255,255,0.03); padding: 30px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.08); }
+        .phone-link { font-size: 1.8rem; color: var(--white); font-weight: 800; display: block; margin-top: 10px; text-decoration: none; }
 
-        /* --- RESPONSIVE MOBILE FIXES --- */
+        /* --- MOBILE --- */
         @media (max-width: 1000px) {
-            .footer-main { grid-template-columns: 1fr 1fr; gap: 40px; }
             .menu-toggle { display: block; }
             .nav-links {
                 display: none; position: absolute; top: 75px; right: 0; width: 250px;
-                background: white; flex-direction: column; padding: 30px;
-                border-radius: 25px; box-shadow: var(--shadow-md); border: 1px solid var(--border);
+                background: white; flex-direction: column; padding: 30px; border-radius: 25px; box-shadow: var(--shadow-md);
             }
             .nav-links.active { display: flex; }
-            .hero-title { font-size: 4rem; }
-            .page { padding-top: 130px; }
+            .reserve-container { grid-template-columns: 1fr; }
+            .footer-main { grid-template-columns: 1fr 1fr; }
         }
-
         @media (max-width: 600px) {
             .footer-main { grid-template-columns: 1fr; text-align: center; }
-            .nav-links { width: 100%; left: 0; }
-            .hero-title { font-size: 3.2rem; }
         }
     </style>
 </head>
@@ -199,7 +173,8 @@
         <span class="hero-tag">Handcrafted Moments</span>
         <h1 class="hero-title">CAFE PETER</h1>
         <p class="hero-desc">Fresh Brews. Local Ingredients. Premium Taste.</p>
-        <button class="btn-action" onclick="showPage('menu')">View Today’s Menu</button> </div>
+        <button class="btn-action" onclick="showPage('menu')">Explore The Collection</button>
+    </div>
 
     <div id="about-page" class="page">
         <div class="title-group">
@@ -209,8 +184,6 @@
         <p style="max-width: 800px; margin: 0 auto 40px; text-align: center; color: var(--text-light); font-size: 1.25rem; line-height: 1.9;">
             We believe that a great cup of coffee can change your day. Since 2010, Cafe Peter has been a sanctuary for those who appreciate the finer details—from the perfect roast to the warmest smile.
         </p>
-        <div style="text-align: center;">
-            <button class="btn-action" onclick="showPage('reserve')">Reserve Your Table</button> </div>
     </div>
 
     <div id="offers-page" class="page">
@@ -219,17 +192,11 @@
             <h2>Latest Offers</h2>
         </div>
         <div class="offer-grid">
-            <div class="card-style">
-                <h3>Early Bird</h3>
-                <p>Enjoy 20% off on all breakfast items before 10:00 AM.</p>
+            <div class="card-style"><h3>Early Bird</h3><p>Enjoy 20% off on all breakfast items before 10:00 AM.</p></div>
+            <div class="card-style" style="border-color: var(--secondary); background: rgba(226, 114, 91, 0.02);">
+                <h3>Coffee & Cake</h3><p>Buy any large coffee and get a slice of cake for half price.</p>
             </div>
-            <div class="card-style" style="border-color: var(--secondary); background: rgba(226, 114, 91, 0.02);"> <h3>Coffee & Cake</h3>
-                <p>Buy any large coffee and get a slice of cake for half price.</p>
-            </div>
-            <div class="card-style">
-                <h3>Friendship Friday</h3>
-                <p>Buy one get one free on all Teas every Friday evening.</p>
-            </div>
+            <div class="card-style"><h3>Friendship Friday</h3><p>Buy one get one free on all Teas every Friday evening.</p></div>
         </div>
     </div>
 
@@ -238,14 +205,12 @@
             <span class="hero-tag">The Menu</span>
             <h2>Our Collections</h2>
         </div>
-
         <div class="menu-tabs">
             <button class="tab-btn active" onclick="filterMenu('all', this)">All</button>
             <button class="tab-btn" onclick="filterMenu('tea', this)">Tea</button>
             <button class="tab-btn" onclick="filterMenu('coffee', this)">Coffee</button>
             <button class="tab-btn" onclick="filterMenu('snacks', this)">Snacks</button>
         </div>
-
         <div class="menu-grid">
             <div class="card-style menu-card" data-cat="coffee"><img src="https://iili.io/fOL2Dle.png"><div class="menu-info"><h4>Espresso</h4><span>$3.00</span></div></div>
             <div class="card-style menu-card" data-cat="coffee"><img src="https://iili.io/fOLfZIj.png"><div class="menu-info"><h4>Cappuccino</h4><span>$5.00</span></div></div>
@@ -257,13 +222,42 @@
 
     <div id="reserve-page" class="page">
         <div class="title-group">
-            <span class="hero-tag">Availability</span>
-            <h2>Table Reservation</h2>
+            <span class="hero-tag">Secure a Table</span>
+            <h2>Dining Reservation</h2>
         </div>
-        <div style="max-width: 600px; margin: 0 auto; background: var(--card); padding: 50px; border-radius: 32px; border: 1px solid var(--border); box-shadow: var(--shadow-md);">
-            <input type="text" placeholder="Your Name">
-            <input type="date">
-            <button class="btn-action" style="width: 100%;">Book My Table</button> </div>
+        
+        <div class="reserve-container">
+            <div class="reserve-info">
+                <h3 style="font-family: 'Playfair Display'; font-size: 2rem; margin-bottom: 20px;">The Experience</h3>
+                <p style="opacity: 0.8; font-size: 0.9rem; margin-bottom: 30px;">Book your table in advance to ensure the best seating. We hold reservations for 15 minutes past scheduled time.</p>
+                <div style="font-size: 0.8rem; font-weight: 600; letter-spacing: 1px;">
+                    <p>✓ Private Booths Available</p>
+                    <p>✓ Complimentary Valet</p>
+                    <p>✓ Special Occasion Setups</p>
+                </div>
+            </div>
+            <div class="reserve-form">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" placeholder="Peter Smith">
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div class="form-group">
+                        <label>Guests</label>
+                        <select>
+                            <option>2 People</option>
+                            <option>4 People</option>
+                            <option>6+ People</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Date</label>
+                        <input type="date">
+                    </div>
+                </div>
+                <button class="btn-action" style="width: 100%; margin-top: 10px;">Confirm Booking</button>
+            </div>
+        </div>
     </div>
 
     <div id="contact-page" class="page">
@@ -271,7 +265,7 @@
             <span class="hero-tag">Visit Us</span>
             <h2>Find Us</h2>
         </div>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;" id="contact-grid">
             <div class="card-style">
                 <span class="f-title">Location</span>
                 <p>123 Forest Lane, Green Park<br>Metropolis, NY 10012</p>
@@ -279,8 +273,8 @@
                 <span class="f-title">Opening Hours</span>
                 <p>Daily: 08:00 AM - 11:00 PM</p>
             </div>
-            <div style="background: #e9e5d9; border-radius: 24px; display: flex; align-items: center; justify-content: center; min-height: 250px; border: 1px solid var(--border);">
-                <p style="color: var(--text-light); font-weight: 600;">[ Interactive Map View ]</p>
+            <div style="border-radius: 24px; overflow: hidden; min-height: 300px; border: 1px solid var(--border); box-shadow: var(--shadow-sm);">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.2412648750455!2d-73.98784368459377!3d40.75797477932688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480293%3A0x5aa1a5a14218d0a2!2sTimes%20Square!5e0!3m2!1sen!2sus!4v1675865421542!5m2!1sen!2sus" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </div>
     </div>
@@ -289,7 +283,7 @@
         <div class="footer-main">
             <div>
                 <h2 class="logo" style="color: var(--white); margin-bottom: 25px;">PETER.</h2>
-                <p style="color: rgba(255,255,255,0.5); font-size: 0.95rem;">Elevating your daily coffee ritual with premium ingredients and a relaxing atmosphere since 2010.</p>
+                <p style="color: rgba(255,255,255,0.5); font-size: 0.95rem;">Elevating your daily coffee ritual since 2010.</p>
             </div>
             <div>
                 <span class="f-title">Quick Links</span>
@@ -315,41 +309,30 @@
                 </div>
             </div>
         </div>
-        <p style="text-align: center; color: rgba(255,255,255,0.2); font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 40px;">
-            &copy; 2026 CAFE PETER. FRESH & PREMIUM. ALL RIGHTS RESERVED.
-        </p>
+        <p style="text-align: center; color: rgba(255,255,255,0.2); font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 40px;">&copy; 2026 CAFE PETER. FRESH & PREMIUM.</p>
     </footer>
 
     <script>
-        // Hamburger Menu Logic
         const mobileToggle = document.getElementById('mobile-toggle');
         const navList = document.getElementById('nav-list');
 
-        mobileToggle.addEventListener('click', () => {
-            navList.classList.toggle('active');
-        });
+        mobileToggle.addEventListener('click', () => { navList.classList.toggle('active'); });
 
         function showPage(id) {
             navList.classList.remove('active');
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
             document.getElementById(id + '-page').classList.add('active');
-            const targetLink = document.getElementById('l-' + id);
-            if(targetLink) targetLink.classList.add('active');
+            const target = document.getElementById('l-' + id);
+            if(target) target.classList.add('active');
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function filterMenu(cat, btn) {
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-            const items = document.querySelectorAll('.menu-card');
-            items.forEach(item => {
-                if(cat === 'all' || item.getAttribute('data-cat') === cat) {
-                    item.style.display = 'block';
-                    item.style.animation = 'fadeIn 0.5s ease';
-                } else {
-                    item.style.display = 'none';
-                }
+            document.querySelectorAll('.menu-card').forEach(item => {
+                item.style.display = (cat === 'all' || item.getAttribute('data-cat') === cat) ? 'block' : 'none';
             });
         }
     </script>
