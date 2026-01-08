@@ -2,19 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>CAFE PETER | Premium</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAFE PETER | Premium Dining</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600;800&family=Playfair+Display:wght@900&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --primary: #1b3022;
-            --secondary: #e2725b;
-            --bg: #fdfaf5;
-            --card: #ffffff;
+            --primary: #1b3022; /* Deep Emerald Green */
+            --secondary: #e2725b; /* Warm Terracotta */
+            --bg: #fdfaf5; /* Soft Cream */
+            --card: #ffffff; /* Pure White */
             --border: #e0dcd0;
             --text-dark: #1b3022;
             --text-light: #5c675f;
+            --white: #ffffff;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -23,86 +24,133 @@
             color: var(--text-dark); 
             font-family: 'Outfit', sans-serif;
             overflow-x: hidden;
-            width: 100%;
         }
 
         /* --- NAVIGATION --- */
         nav {
-            position: fixed; top: 15px; left: 50%; transform: translateX(-50%);
+            position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
             width: 90%; max-width: 1200px;
-            padding: 15px 25px; background: #ffffff;
-            border: 1px solid var(--border);
+            padding: 15px 40px; background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px); border: 1px solid var(--border);
             display: flex; justify-content: space-between; align-items: center;
-            border-radius: 50px; z-index: 9999;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-radius: 100px; z-index: 2000;
+            box-shadow: 0 10px 30px rgba(27, 48, 34, 0.05);
         }
-        .logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--primary); font-weight: 900; letter-spacing: 1px; }
-        
-        /* Desktop Links */
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; letter-spacing: 2px; color: var(--primary); cursor: pointer; }
         .nav-links { display: flex; list-style: none; gap: 20px; }
         .nav-links a { 
             text-decoration: none; color: var(--text-light); font-size: 0.8rem; 
-            font-weight: 600; text-transform: uppercase; cursor: pointer;
+            font-weight: 600; text-transform: uppercase; cursor: pointer; transition: 0.3s;
         }
-        .nav-links a.active { color: var(--secondary); }
+        .nav-links a:hover, .nav-links a.active { color: var(--secondary); }
 
-        /* HAMBURGER BUTTON - STYLED TO BE VISIBLE */
-        .menu-toggle { 
-            display: none; 
-            font-size: 2rem; 
-            cursor: pointer; 
-            color: var(--secondary); /* Bright color so you see it */
-            line-height: 1;
-            padding: 5px;
+        /* MOBILE MENU TOGGLE - ONLY VISIBLE ON MOBILE */
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            color: var(--primary);
+            cursor: pointer;
         }
 
-        /* --- MOBILE STYLES --- */
-        @media (max-width: 900px) {
-            .menu-toggle { display: block !important; } /* Forces visibility */
-            
-            .nav-links {
-                display: none; /* Hidden by default */
-                position: absolute; top: 70px; left: 0; width: 100%; 
-                background: #ffffff; flex-direction: column; padding: 30px;
-                border-radius: 25px; border: 1px solid var(--border);
-                box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-                gap: 20px; text-align: center;
-            }
-            .nav-links.show { display: flex !important; } /* Shows when clicked */
-            
-            .hero-title { font-size: 3rem !important; }
-            .page { padding-top: 120px !important; }
+        /* --- PAGE CONTENT --- */
+        .page { display: none; min-height: 100vh; padding: 140px 10% 80px; }
+        .page.active { display: block; animation: slideUp 0.6s ease forwards; }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* --- CONTENT --- */
-        .page { display: none; min-height: 100vh; padding: 150px 8% 80px; text-align: center; }
-        .page.active { display: block; animation: fadeIn 0.4s ease; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
+        /* --- HOME HERO --- */
         #home-page { 
-            padding: 0; display: none; flex-direction: column; justify-content: center; align-items: center;
-            background: linear-gradient(rgba(27,48,34,0.7), rgba(27,48,34,0.4)), url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1200&q=80');
+            padding: 0; display: none; flex-direction: column; 
+            justify-content: center; align-items: center; text-align: center;
+            background: linear-gradient(rgba(27, 48, 34, 0.6), rgba(27, 48, 34, 0.3)), url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1920&q=80');
             background-size: cover; background-position: center;
         }
         #home-page.active { display: flex; }
-        .hero-title { font-family: 'Playfair Display'; font-size: 5rem; color: white; line-height: 1; }
+        .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 8vw, 5rem); margin-bottom: 10px; line-height: 1; color: var(--white); }
+        .hero-tag { color: var(--secondary); letter-spacing: 8px; text-transform: uppercase; font-size: 0.9rem; margin-bottom: 20px; font-weight: 800; }
 
-        .card-style { background: #fff; border: 1px solid var(--border); padding: 25px; border-radius: 20px; margin-bottom: 20px; }
-        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-        .menu-card img { width: 100%; height: 200px; object-fit: cover; border-radius: 15px; }
+        /* --- CARDS & SECTIONS --- */
+        .title-group { text-align: center; margin-bottom: 50px; }
+        .title-group h2 { font-family: 'Playfair Display'; font-size: clamp(2rem, 5vw, 3rem); color: var(--primary); }
+        
+        .offer-grid, .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        
+        .card-style { 
+            background: var(--card); border: 1px solid var(--border); padding: 30px; 
+            border-radius: 20px; transition: 0.4s; box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+        }
+        .card-style:hover { border-color: var(--secondary); transform: translateY(-5px); }
+        .card-style h3 { color: var(--primary); font-size: 1.5rem; margin-bottom: 15px; }
+        .card-style p { color: var(--text-light); }
 
-        .btn-action { padding: 15px 35px; background: var(--primary); color: white; border: none; border-radius: 50px; font-weight: 800; cursor: pointer; text-transform: uppercase; margin-top: 20px; }
+        /* --- MENU SPECIFIC --- */
+        .menu-tabs { display: flex; justify-content: center; gap: 10px; margin-bottom: 50px; flex-wrap: wrap; }
+        .tab-btn { 
+            padding: 12px 30px; border: 1px solid var(--primary); background: transparent; 
+            color: var(--primary); border-radius: 50px; cursor: pointer; transition: 0.3s; font-weight: 600;
+        }
+        .tab-btn.active { background: var(--primary); color: var(--white); }
 
-        footer { background: var(--primary); padding: 50px 8%; color: white; margin-top: 50px; }
-        .contact-box { background: rgba(255,255,255,0.1); padding: 20px; border-radius: 15px; margin-top: 15px; }
+        .menu-card { padding: 0; overflow: hidden; }
+        .menu-card img { width: 100%; height: 250px; object-fit: cover; }
+        .menu-info { padding: 20px; display: flex; justify-content: space-between; align-items: center; }
+        .menu-info h4 { font-size: 1.1rem; color: var(--primary); }
+        .menu-info span { color: var(--secondary); font-weight: 800; }
+
+        /* --- BUTTONS --- */
+        .btn-action { 
+            padding: 18px 45px; background: var(--primary); color: var(--white); border: none; 
+            font-weight: 800; border-radius: 50px; cursor: pointer; text-transform: uppercase; 
+            letter-spacing: 1px; transition: 0.3s;
+        }
+        .btn-action:hover { background: var(--secondary); transform: translateY(-3px); }
+
+        /* --- FOOTER --- */
+        footer { background: var(--primary); padding: 80px 10% 40px; color: var(--white); }
+        .footer-main { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 60px; }
+        .f-title { color: var(--secondary); font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 25px; display: block; font-weight: 800; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: #cbd5ce; text-decoration: none; font-size: 0.9rem; transition: 0.3s; cursor: pointer; }
+        .footer-links a:hover { color: var(--secondary); }
+        
+        .contact-box { background: rgba(255,255,255,0.05); padding: 30px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); }
+        .phone-link { font-size: 1.6rem; color: var(--white); font-weight: 800; display: block; margin-top: 10px; text-decoration: none; }
+
+        /* --- FORMS --- */
+        input { width: 100%; padding: 15px; background: var(--white); border: 1px solid var(--border); margin-bottom: 20px; border-radius: 10px; }
+
+        /* --- RESPONSIVE MOBILE FIXES --- */
+        @media (max-width: 900px) {
+            nav { padding: 15px 25px; border-radius: 30px; top: 10px; width: 95%; }
+            .menu-toggle { display: block; }
+            .nav-links {
+                display: none; /* Hide standard links */
+                position: absolute; top: 70px; right: 0; width: 220px;
+                background: white; flex-direction: column; padding: 20px;
+                border-radius: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                border: 1px solid var(--border);
+            }
+            .nav-links.active { display: flex; }
+            
+            .footer-main { grid-template-columns: 1fr; gap: 40px; }
+            .hero-title { font-size: 3rem; }
+            .page { padding-top: 100px; padding-left: 5%; padding-right: 5%; }
+            
+            /* Specific fix for contact page columns */
+            #contact-page > div:nth-child(2) { grid-template-columns: 1fr !important; }
+        }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo">PETER</div>
-        <div class="menu-toggle" id="hamburger">☰</div>
-        <ul class="nav-links" id="menu-list">
+        <div class="logo" onclick="showPage('home')">PETER</div>
+        <div class="menu-toggle" id="mobile-toggle">☰</div>
+        <ul class="nav-links" id="nav-list">
             <li><a onclick="showPage('home')" id="l-home" class="active">Home</a></li>
             <li><a onclick="showPage('about')" id="l-about">Story</a></li>
             <li><a onclick="showPage('offers')" id="l-offers">Offers</a></li>
@@ -113,100 +161,154 @@
     </nav>
 
     <div id="home-page" class="page active">
+        <span class="hero-tag">Handcrafted Moments</span>
         <h1 class="hero-title">CAFE PETER</h1>
-        <p style="color: white; margin-top: 15px;">Premium Coffee & Dining</p>
-        <button class="btn-action" onclick="showPage('menu')">Our Menu</button>
+        <p style="color: var(--white); margin-bottom: 40px; font-size: 1.2rem; opacity: 0.9;">Fresh Brews. Local Ingredients. Premium Taste.</p>
+        <button class="btn-action" onclick="showPage('menu')">View Collections</button>
     </div>
 
     <div id="about-page" class="page">
-        <h2 style="font-family: 'Playfair Display'; font-size: 2.5rem; margin-bottom: 20px;">Our Story</h2>
-        <p style="color: var(--text-light); max-width: 600px; margin: 0 auto;">Since 2010, we've been crafting the perfect coffee experience with love and premium ingredients.</p>
+        <div class="title-group">
+            <span class="hero-tag">Our Roots</span>
+            <h2>The Peter Story</h2>
+        </div>
+        <p style="max-width: 800px; margin: 0 auto; text-align: center; color: var(--text-light); font-size: 1.2rem; line-height: 1.8;">
+            We believe that a great cup of coffee can change your day. Since 2010, Cafe Peter has been a sanctuary for those who appreciate the finer details—from the perfect roast to the warmest smile.
+        </p>
     </div>
 
     <div id="offers-page" class="page">
-        <h2 style="margin-bottom: 30px;">Latest Offers</h2>
-        <div class="card-style">
-            <h3 style="color: var(--secondary);">Happy Hours</h3>
-            <p>20% off all drinks from 4 PM - 6 PM.</p>
+        <div class="title-group">
+            <span class="hero-tag">Special Deals</span>
+            <h2>Latest Offers</h2>
+        </div>
+        <div class="offer-grid">
+            <div class="card-style">
+                <h3>Early Bird</h3>
+                <p>Enjoy 20% off on all breakfast items before 10:00 AM.</p>
+            </div>
+            <div class="card-style">
+                <h3>Coffee & Cake</h3>
+                <p>Buy any large coffee and get a slice of cake for half price.</p>
+            </div>
+            <div class="card-style">
+                <h3>Friendship Friday</h3>
+                <p>Buy one get one free on all Teas every Friday evening.</p>
+            </div>
         </div>
     </div>
 
     <div id="menu-page" class="page">
-        <h2 style="margin-bottom: 30px;">The Menu</h2>
+        <div class="title-group">
+            <span class="hero-tag">The Menu</span>
+            <h2>Our Collections</h2>
+        </div>
+
+        <div class="menu-tabs">
+            <button class="tab-btn active" onclick="filterMenu('all', this)">All</button>
+            <button class="tab-btn" onclick="filterMenu('tea', this)">Tea</button>
+            <button class="tab-btn" onclick="filterMenu('coffee', this)">Coffee</button>
+            <button class="tab-btn" onclick="filterMenu('snacks', this)">Snacks</button>
+        </div>
+
         <div class="menu-grid">
-            <div class="card-style menu-card">
-                <img src="https://iili.io/fOL2Dle.png">
-                <div style="display: flex; justify-content: space-between; margin-top: 15px;">
-                    <b>Cappuccino</b><span>$5.00</span>
-                </div>
-            </div>
-            <div class="card-style menu-card">
-                <img src="https://iili.io/fOLo5H7.jpg">
-                <div style="display: flex; justify-content: space-between; margin-top: 15px;">
-                    <b>Burger</b><span>$9.00</span>
-                </div>
-            </div>
+            <div class="card-style menu-card" data-cat="coffee"><img src="https://iili.io/fOL2Dle.png"><div class="menu-info"><h4>Espresso</h4><span>$3.00</span></div></div>
+            <div class="card-style menu-card" data-cat="coffee"><img src="https://iili.io/fOLfZIj.png"><div class="menu-info"><h4>Cappuccino</h4><span>$5.00</span></div></div>
+            <div class="card-style menu-card" data-cat="tea"><img src="https://iili.io/fOsP17n.png"><div class="menu-info"><h4>Masala Chai</h4><span>$4.00</span></div></div>
+            <div class="card-style menu-card" data-cat="snacks"><img src="https://iili.io/fOLo5H7.jpg"><div class="menu-info"><h4>Paneer Burger</h4><span>$9.00</span></div></div>
+            <div class="card-style menu-card" data-cat="snacks"><img src="https://iili.io/fOLx51R.jpg"><div class="menu-info"><h4>Veg Pizza</h4><span>$12.00</span></div></div>
         </div>
     </div>
 
     <div id="reserve-page" class="page">
-        <h2>Book a Table</h2>
-        <div style="max-width: 400px; margin: 30px auto;">
-            <input type="text" placeholder="Name" style="width: 100%; padding: 12px; margin-bottom: 10px; border-radius: 10px; border: 1px solid #ddd;">
-            <button class="btn-action" style="width: 100%;">Confirm</button>
+        <div class="title-group"><h2>Table Reservation</h2></div>
+        <div style="max-width: 600px; margin: 0 auto; background: var(--card); padding: 40px; border-radius: 30px; border: 1px solid var(--border);">
+            <input type="text" placeholder="Your Name">
+            <input type="date">
+            <button class="btn-action" style="width: 100%;">Book Now</button>
         </div>
     </div>
 
     <div id="contact-page" class="page">
-        <h2>Location</h2>
-        <div class="card-style">
-            <p>123 Forest Lane, NY</p>
-            <p>Open Daily: 8 AM - 11 PM</p>
+        <div class="title-group"><h2>Find Us</h2></div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+            <div class="card-style">
+                <span class="f-title">Location</span>
+                <p>123 Forest Lane, Green Park<br>Metropolis, NY 10012</p>
+                <br>
+                <span class="f-title">Opening Hours</span>
+                <p>Daily: 08:00 AM - 11:00 PM</p>
+            </div>
+            <div style="background: #e9e5d9; border-radius: 20px; display: flex; align-items: center; justify-content: center; min-height: 200px;">
+                <p style="color: var(--text-light);">[ Map View ]</p>
+            </div>
         </div>
     </div>
 
     <footer>
-        <div style="text-align: center;">
-            <h2 style="letter-spacing: 2px;">PETER.</h2>
-            <div class="contact-box">
-                <p style="font-size: 0.7rem; color: var(--secondary); font-weight: 800;">CALL US</p>
-                <a href="tel:5551234567" style="color: white; font-size: 1.5rem; text-decoration: none; font-weight: 800;">+1 555-123-4567</a>
+        <div class="footer-main">
+            <div>
+                <h2 class="logo" style="color: var(--white); margin-bottom: 20px;">PETER.</h2>
+                <p style="color: #cbd5ce; font-size: 0.9rem;">Elevating your daily coffee ritual with premium ingredients and a relaxing atmosphere.</p>
             </div>
-            <p style="margin-top: 30px; font-size: 0.7rem; opacity: 0.5;">&copy; 2026 CAFE PETER.</p>
+            <div>
+                <span class="f-title">Quick Links</span>
+                <ul class="footer-links">
+                    <li><a onclick="showPage('home')">Home</a></li>
+                    <li><a onclick="showPage('menu')">Menu</a></li>
+                    <li><a onclick="showPage('offers')">Offers</a></li>
+                </ul>
+            </div>
+            <div>
+                <span class="f-title">Customer Care</span>
+                <ul class="footer-links">
+                    <li><a onclick="showPage('contact')">Find Us</a></li>
+                    <li><a onclick="showPage('reserve')">Booking</a></li>
+                    <li><a href="#">Privacy</a></li>
+                </ul>
+            </div>
+            <div>
+                <span class="f-title">Order Now</span>
+                <div class="contact-box">
+                    <p style="font-size: 0.7rem; color: var(--secondary);">CALL FOR DELIVERY</p>
+                    <a href="tel:5551234567" class="phone-link">+1 555-123-4567</a>
+                </div>
+            </div>
         </div>
+        <p style="text-align: center; color: #5c675f; font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 40px;">&copy; 2026 CAFE PETER. FRESH & PREMIUM.</p>
     </footer>
 
     <script>
-        // MOBILE MENU SCRIPT
-        const hamburger = document.getElementById('hamburger');
-        const menuList = document.getElementById('menu-list');
+        // Hamburger Menu Logic
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const navList = document.getElementById('nav-list');
 
-        hamburger.onclick = function() {
-            menuList.classList.toggle('show');
+        mobileToggle.addEventListener('click', () => {
+            navList.classList.toggle('active');
+        });
+
+        function showPage(id) {
+            // Close mobile menu when a link is clicked
+            navList.classList.remove('active');
+            
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+            document.getElementById(id + '-page').classList.add('active');
+            document.getElementById('l-' + id).classList.add('active');
+            window.scrollTo(0,0);
         }
 
-        // NAVIGATION SCRIPT
-        function showPage(id) {
-            // 1. Close menu on click
-            menuList.classList.remove('show');
-
-            // 2. Hide all pages
-            const pages = document.querySelectorAll('.page');
-            pages.forEach(p => p.classList.remove('active'));
-
-            // 3. Deactivate all links
-            const links = document.querySelectorAll('.nav-links a');
-            links.forEach(l => l.classList.remove('active'));
-
-            // 4. Show selected page
-            document.getElementById(id + '-page').classList.add('active');
-            
-            // 5. Highlight link
-            const activeLink = document.getElementById('l-' + id);
-            if(activeLink) activeLink.classList.add('active');
-
-            // 6. Scroll to top
-            window.scrollTo(0,0);
+        function filterMenu(cat, btn) {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const items = document.querySelectorAll('.menu-card');
+            items.forEach(item => {
+                if(cat === 'all' || item.getAttribute('data-cat') === cat) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
         }
     </script>
 </body>
